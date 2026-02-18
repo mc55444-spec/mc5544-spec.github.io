@@ -1,271 +1,531 @@
-<!DOCTYPE html>
+<!DOCTYPE html>  
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>个人作品集 | 机器人与智能装备开发</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人作品集 | 机器人与智能装备开发</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
-}
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
 
-body{
-background-color:#f5f7fa;
-color:#333;
-line-height:1.6;
-}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-.container{
-max-width:1200px;
-margin:0 auto;
-padding:0 20px;
-}
+        /* 导航栏 */
+        nav {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
 
-/* 导航栏 */
-nav{
-background-color:#2c3e50;
-color:white;
-padding:1rem 0;
-position:fixed;
-width:100%;
-top:0;
-z-index:100;
-box-shadow:0 2px 5px rgba(0,0,0,0.1);
-}
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-nav .container{
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
 
-.logo{
-font-size:1.5rem;
-font-weight:bold;
-}
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
 
-.nav-links{
-display:flex;
-list-style:none;
-gap:2rem;
-}
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
 
-.nav-links a{
-color:white;
-text-decoration:none;
-transition:0.3s;
-}
+        .nav-links a:hover {
+            color: #3498db;
+        }
 
-.nav-links a:hover{
-color:#3498db;
-}
+        /* 英雄区 */
+        .hero {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
 
-/* 英雄区 */
-.hero{
-background:linear-gradient(135deg,#3498db,#2c3e50);
-color:white;
-padding:120px 0 80px;
-text-align:center;
-}
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
 
-.hero h1{
-font-size:2.8rem;
-margin-bottom:1rem;
-}
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
 
-.hero p{
-font-size:1.2rem;
-max-width:800px;
-margin:0 auto 2rem;
-}
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: white;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
 
-.btn{
-display:inline-block;
-padding:12px 30px;
-background:white;
-color:#2c3e50;
-text-decoration:none;
-border-radius:5px;
-font-weight:600;
-transition:0.3s;
-}
+        .btn:hover {
+            transform: translateY(-3px);
+        }
 
-.btn:hover{
-transform:translateY(-3px);
-}
+        /* 通用区块 */
+        section {
+            padding: 80px 0;
+        }
 
-/* 通用 */
-section{
-padding:80px 0;
-}
+        section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 3rem;
+        }
 
-section h2{
-text-align:center;
-font-size:2.2rem;
-color:#2c3e50;
-margin-bottom:3rem;
-}
+        /* 教育经历 */
+        .education {
+            background-color: white;
+        }
 
-/* 视频展示 */
-.videos{
-background-color:#f5f7fa;
-}
+        .edu-item {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
 
-.video-card{
-background:white;
-padding:1.5rem;
-border-radius:8px;
-margin-bottom:2rem;
-box-shadow:0 3px 10px rgba(0,0,0,0.1);
-}
+        .edu-item h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
 
-.video-card video{
-width:100%;
-border-radius:8px;
-margin-bottom:1rem;
-}
+        .edu-item p {
+            color: #666;
+        }
 
-.video-caption{
-color:#555;
-font-size:0.95rem;
-}
+        /* 技能 */
+        .skills {
+            background-color: #f5f7fa;
+        }
 
-/* 联系 */
-.contact{
-background:#2c3e50;
-color:white;
-text-align:center;
-}
+        .skill-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
 
-.contact-info{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:2rem;
-margin-top:2rem;
-}
+        .skill-item {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
 
-.contact-info a{
-color:white;
-text-decoration:none;
-display:flex;
-align-items:center;
-gap:0.5rem;
-font-size:1.1rem;
-}
+        .skill-item h3 {
+            color: #3498db;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-footer{
-background:#1a252f;
-color:#bdc3c7;
-text-align:center;
-padding:1.5rem 0;
-}
+        .skill-item ul {
+            list-style: none;
+            color: #555;
+        }
 
-@media(max-width:768px){
-.nav-links{display:none;}
-.hero h1{font-size:2rem;}
-}
-</style>
+        .skill-item li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* 项目经历 */
+        .projects {
+            background-color: white;
+        }
+
+        .project-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-header h3 {
+            font-size: 1.4rem;
+        }
+
+        .project-body {
+            padding: 1.5rem;
+        }
+        /* 新增：项目图片样式 */
+        .project-img {
+            width: 50%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .project-body h4 {
+            color: #2c3e50;
+            margin: 1rem 0 0.5rem;
+        }
+
+        .project-body p, .project-body ul {
+            color: #555;
+        }
+
+        .project-body ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .project-body li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .project-body li::before {
+            content: "•";
+            color: #3498db;
+            position: absolute;
+            left: 0;
+        }
+
+        /* ===== 新增：视频展示样式 ===== */
+        .videos {
+            background-color: #f5f7fa;
+        }
+
+        .video-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .video-card video {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .video-card p {
+            color: #555;
+        }
+        /* ===== 视频样式结束 ===== */
+
+        /* 联系我 */
+        .contact {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: #3498db;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #1a252f;
+            color: #bdc3c7;
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="container">
+            <div class="logo">个人作品集</div>
+            <ul class="nav-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#education">教育经历</a></li>
+                <li><a href="#skills">相关技能</a></li>
+                <li><a href="#projects">项目经历</a></li>
+                <li><a href="#videos">视频展示</a></li>
+                <li><a href="#contact">联系我</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<nav>
-<div class="container">
-<div class="logo">个人作品集</div>
-<ul class="nav-links">
-<li><a href="#home">首页</a></li>
-<li><a href="#projects">项目经历</a></li>
-<li><a href="#videos">视频展示</a></li>
-<li><a href="#contact">联系我</a></li>
-</ul>
-</div>
-</nav>
+    <!-- 英雄区 -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>专注于机器人与智能装备开发</h1>
+            <p>机械设计 | 硬件开发 | 智能控制 | 水下机器人与康复装备</p>
+            <a href="#projects" class="btn">查看我的项目</a>
+        </div>
+    </section>
 
-<section id="home" class="hero">
-<div class="container">
-<h1>专注于机器人与智能装备开发</h1>
-<p>机械设计 | 硬件开发 | 智能控制 | 水下机器人与康复装备</p>
-<a href="#projects" class="btn">查看我的项目</a>
-</div>
-</section>
+    <!-- 教育经历 -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2>教育经历</h2>
+            <div class="edu-item">
+                <h3>澳门大学 | 机器人自主系统 | 硕士</h3>
+                <p>2025.8 - 2027.5</p>
+            </div>
+            <div class="edu-item">
+                <h3>广州大学 | 机械工程及其自动化 | 本科</h3>
+                <p>2021.9 - 2025.6</p>
+            </div>
+        </div>
+    </section>
 
-<section id="projects">
-<div class="container">
-<h2>项目经历</h2>
-<p style="text-align:center;color:#555;">
-水下机器人开发 / 软体康复装备 / 智能控制系统集成
-</p>
-</div>
-</section>
+    <!-- 相关技能 -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>相关技能</h2>
+            <div class="skill-list">
+                <div class="skill-item">
+                    <h3><i class="fas fa-cogs"></i> 机械设计能力</h3>
+                    <ul>
+                        <li>熟练运用CAD完成二维工程图绘制</li>
+                        <li>通过SolidWorks开展三维建模与装配设计</li>
+                        <li>掌握3D打印参数调试与工艺优化方法</li>
+                        <li>通过有限元软件abaqus进行力学仿真优化</li>
+                    </ul>
+                </div>
+                <div class="skill-item">
+                    <h3><i class="fas fa-microchip"></i> 硬件开发能力</h3>
+                    <ul>
+                        <li>精通STM32、Arduino、ESP32等主流开发板的驱动开发与外设调试</li>
+                        <li>通过C/C++实现单片机控制逻辑编程</li>
+                        <li>了解Python在串口通信及数据处理中的应用</li>
+                    </ul>
+                </div>
+                <div class="skill-item">
+                    <h3><i class="fas fa-brain"></i> 智能控制技术</h3>
+                    <ul>
+                        <li>熟练使用OpenCV进行视觉数据处理与分析</li>
+                        <li>配合动捕设备完成机械手/机械臂的位置姿态捕捉与轨迹优化</li>
+                        <li>提升设备运动精度与稳定性</li>
+                    </ul>
+                </div>
+                <div class="skill-item">
+                    <h3><i class="fas fa-network-wired"></i> 通讯协议应用</h3>
+                    <ul>
+                        <li>掌握RS485、CAN通讯模式</li>
+                        <li>熟悉Modbus通讯协议</li>
+                        <li>可通过多级控制实现设备协同化管理</li>
+                    </ul>
+                </div>
+                <div class="skill-item">
+                    <h3><i class="fas fa-language"></i> 外语水平</h3>
+                    <ul>
+                        <li>CET-6: 435</li>
+                        <li>IELTS: 6</li>
+                        <li>具备良好的英语读写能力，可协调英文技术文档</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- 视频展示 -->
-<section id="videos" class="videos">
-<div class="container">
-<h2>项目视频展示</h2>
+    <!-- 项目经历 -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>项目经历</h2>
 
-<div class="video-card">
-<video controls>
-<source src="videos/video1.mp4" type="video/mp4">
-</video>
-<p class="video-caption">
-水下可抓取机械臂在真实水域环境下的抓取与弯曲实验演示。
-</p>
-</div>
+            <!-- 项目1：水下可抓取机械臂 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>水下可抓取机械臂</h3>
+                    <span>2026.1 - 2026.4</span>
+                </div>
+                <div class="project-body">
+                    <h4>项目背景</h4>
+                    <ul>
+                        <li>针对大湾区水域作业需求，研发可搭载于潜艇或船舶的水下可抓取机械臂，解决易损物体（如海参）无损抓取问题</li>
+                        <li>项目要求具备水下环境适应性与操作灵活性，满足复杂水下作业场景需求</li>
+                    </ul>
 
-<div class="video-card">
-<video controls>
-<source src="videos/video2.mp4" type="video/mp4">
-</video>
-<p class="video-caption">
-软体气动康复手套与虚拟交互系统联动演示。
-</p>
-</div>
+                    <h4>核心贡献</h4>
+                    <ul>
+                        <li>机械结构设计：主导设计镂空结构机械臂，采用TPU材料3D打印实现，兼顾大范围弯曲能力与水流通过率</li>
+                        <li>驱动系统开发：采用线驱模式驱动机械臂，通过4台水下舵机拉动控制线实现全向弯曲</li>
+                        <li>控制系统实现：基于Arduino单片机完成4台电机的控制逻辑开发，实现精准的运动控制</li>
+                        <li>实验验证：执行水下实验验证工作，成功验证机械臂水下抓取可行性，实现目标物体稳定抓取</li>
+                    </ul>
 
-</div>
-</section>
+                    <h4>项目成果</h4>
+                    <ul>
+                        <li>开发的水下机械臂具备良好水平扩展能力，可应对突发作业需求</li>
+                        <li>机械臂结构设计优化后，水下稳定性显著提升，抗干扰能力显著增强</li>
+                    </ul>
+                </div>
+            </div>
 
-<section id="contact" class="contact">
-<div class="container">
-<h2>联系我</h2>
-<div class="contact-info">
-<a href="mailto:mc55444@um.edu.mo">
-<i class="fas fa-envelope"></i> mc55444@um.edu.mo
-</a>
-<a href="#">
-<i class="fab fa-github"></i> GitHub
-</a>
-<a href="#">
-<i class="fab fa-linkedin"></i> LinkedIn
-</a>
-<a href="tel:+8613044223483">
-<i class="fas fa-phone"></i> +86 13044223483
-</a>
-</div>
-</div>
-</section>
+            <!-- 项目2：可穿戴软体气动康复手套（已添加图片） -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>可穿戴软体气动康复手套</h3>
+                    <span>2026.1-2026.4</span>
+                </div>
+                <div class="project-body">
+                    <!-- 康复手套图片 -->
+                    <img src="images/rehab_gloves.jpg" alt="可穿戴软体气动康复手套" class="project-img">
+                    
+                    <h4>项目背景</h4>
+                    <ul>
+                        <li>为解决中风患者手部康复训练的便捷性与交互性需求，开发可穿戴软体气动康复手套</li>
+                        <li>项目要求具备重量轻、穿戴便捷、支持游戏化交互及自动化康复流程的特点</li>
+                    </ul>
 
-<footer>
-<div class="container">
-<p>&copy; 2026 个人作品集 | 机器人与智能装备开发</p>
-</div>
-</footer>
+                    <h4>核心贡献</h4>
+                    <ul>
+                        <li>结构设计：完成核心执行部件与固定结构的设计及3D打印实现，采用TPU软材料3D打印气动波浪执行器</li>
+                        <li>控制系统：设计STM32+SMC比例阀的控制架构，实现对每个执行器的独立精准气压调节</li>
+                        <li>传感器集成：在执行器中部署5根flex sensor传感器，通过串口将数据传输至UE环境</li>
+                        <li>系统集成：搭建完整电路与气路动力传输系统，保障气压控制的精准性和稳定性</li>
+                    </ul>
 
-<script>
-document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-anchor.addEventListener('click',function(e){
-e.preventDefault();
-document.querySelector(this.getAttribute('href')).scrollIntoView({
-behavior:'smooth'
-});
-});
-});
-</script>
+                    <h4>项目成果</h4>
+                    <ul>
+                        <li>开发的可穿戴康复手套重量仅380克，穿戴便捷性提升</li>
+                        <li>实现虚拟手与现实手部动作的实时同步互动，交互响应时间小于50ms</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- ================= 新增视频展示模块 ================= -->
+    <section id="videos" class="videos">
+        <div class="container">
+            <h2>项目视频展示</h2>
+
+            <div class="video-card">
+                <video controls>
+                    <source src="videos/video1.mp4" type="video/mp4">
+                </video>
+                <p>水下可抓取机械臂水下实验演示视频。</p>
+            </div>
+
+            <div class="video-card">
+                <video controls>
+                    <source src="videos/video2.mp4" type="video/mp4">
+                </video>
+                <p>可穿戴软体气动康复手套系统演示视频。</p>
+            </div>
+
+        </div>
+    </section>
+    <!-- ================= 视频模块结束 ================= -->
+
+    <!-- 联系我 -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>联系我</h2>
+            <div class="contact-info">
+                <a href="mailto:mc55444@um.edu.mo"><i class="fas fa-envelope"></i> mc55444@um.edu.mo.mo</a>
+                <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="tel:+86-13044223483"><i class="fas fa-phone"></i> +86 13044223483</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 个人作品集 | 机器人与智能装备开发</p>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
+
 </html>
